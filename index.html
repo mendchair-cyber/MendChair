@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MEND CHAIR - Manutenção, conserto e reforma de cadeiras de escritório na Baixada Santista. Atendimento técnico para empresas, escritórios, clínicas e cadeiras gamer." />
+  <meta name="theme-color" content="#070707" />
+  <meta property="og:title" content="MEND CHAIR | Manutenção técnica de cadeiras de escritório" />
+  <meta property="og:description" content="Especialista em cadeiras de escritório: pistão, rodízios, espuma, estofado, braços, bases, mecanismos e planos empresariais." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mendchair.com.br" />
+  <meta property="og:image" content="assets/logo.png" />
+  <title>MEND CHAIR | Manutenção Técnica de Cadeiras de Escritório</title>
+  <style>
+    :root {
+      --black: #070707;
+      --ink: #101010;
+      --panel: #161616;
+      --panel-2: #1f1f1f;
+      --line: rgba(255, 255, 255, 0.12);
+      --line-dark: rgba(16, 16, 16, 0.12);
+      --gold: #d89422;
+      --gold-2: #f0b642;
+      --gold-soft: #fff1cf;
+      --steel: #c9c7c1;
+      --muted: #a9a39a;
+      --paper: #101010;
+      --white: #f5efe3;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      --radius: 8px;
+      --max: 1180px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--black);
+    }
+
+    body {
+      margin: 0;
+      color: var(--steel);
+      background: var(--black);
+      font-family: var(--font);
+      letter-spacing: 0;
+      text-rendering: geometricPrecision;
+    }
+
+    body.nav-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 7, 7, 0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0b0b0b;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+    }
+
+    .topbar .container {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .topbar strong {
+      color: var(--gold-soft);
+      font-weight: 800;
+    }
+
+    .topbar-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      border: 1px solid rgba(216, 148, 34, 0.55);
+      background: #050505;
+    }
+
+    .brand-word {
+      display: grid;
+      gap: 2px;
+      line-height: 1;
+    }
+
+    .brand-word strong {
+      color: var(--white);
+      font-size: 1.06rem;
+      font-weight: 900;
+    }
+
+    .brand-word span {
+      color: var(--gold-soft);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 28px 0;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 23px;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 4px auto;
+      background: currentColor;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 900;
+      line-height: 1;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #130d06;
+      background: var(--gold-2);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 14px 34px rgba(216, 148, 34, 0.2);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: #ffd06c;
+    }
+
+    .btn-outline {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      color: var(--gold-soft);
+      border-color: rgba(216, 148, 34, 0.7);
+    }
+
+    .btn-small {
+      min-height: 42px;
+      padding: 0 14px;
+      font-size: 0.86rem;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      display: inline-grid;
+      place-items: center;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .svg-sprite {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .wa-icon {
+      width: 19px;
+      height: 19px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+
+    .wa-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: currentColor;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 110px);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(7, 7, 7, 0.96) 0%, rgba(7, 7, 7, 0.88) 42%, rgba(7, 7, 7, 0.42) 100%),
+        linear-gradient(0deg, rgba(7, 7, 7, 0.92) 0%, rgba(7, 7, 7, 0.16) 46%, rgba(7, 7, 7, 0.62) 100%),
+        url("assets/antes-depois-diretoria.png"),
+        #111;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.85), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 86px 0 74px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--gold-soft);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-bottom: 18px;
+      color: var(--white);
+      font-size: 4rem;
+      line-height: 1.02;
+      font-weight: 950;
+    }
+
+    .hero .lead {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.16rem;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(860px, 100%);
+      margin-top: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-meta div {
+      padding: 20px;
+      background: rgba(12, 12, 12, 0.78);
+    }
+
+    .hero-meta strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: 950;
+    }
+
+    .hero-meta span {
+      color: rgba(255, 255, 255, 0.68);
+      line-height: 1.45;
+      font-size: 0.92rem;
+    }
+
+    section {
+      scroll-margin-top: 112px;
+    }
+
+    .section {
+      padding: 86px 0;
+      background: var(--black);
+    }
+
+    .section-light {
+      color: var(--steel);
+      background:
+        linear-gradient(180deg, rgba(216, 148, 34, 0.08), rgba(255, 255, 255, 0.02)),
+        var(--paper);
+    }
+
+    .section-panel {
+      background: var(--panel);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-head.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--gold-2);
+      font-size: 0.78rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .section-light .section-label {
+      color: var(--gold-2);
+    }
+
+    .section h2 {
+      margin-bottom: 0;
+      color: var(--white);
+      font-size: 2.55rem;
+      line-height: 1.1;
+      font-weight: 950;
+    }
+
+    .section-light h2 {
+      color: var(--white);
+    }
+
+    .section-head p {
+      margin: 14px 0 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.03rem;
+      line-height: 1.75;
+    }
+
+    .section-light .section-head p {
+      color: rgba(245, 239, 227, 0.7);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .about-copy {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-copy p {
+      margin-bottom: 18px;
+    }
+
+    .technical-list {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .technical-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.55;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: #130d06;
+      background: var(--gold-2);
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 950;
+    }
+
+    .logo-panel {
+      min-height: 460px;
+      display: grid;
+      place-items: center;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at top, rgba(216, 148, 34, 0.18), transparent 44%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .logo-panel img {
+      width: min(420px, 100%);
+      border-radius: var(--radius);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service {
+      min-height: 214px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .service:hover {
+      transform: translateY(-3px);
+      border-color: rgba(216, 148, 34, 0.55);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .service-number {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 18px;
+      color: var(--gold-soft);
+      border: 1px solid rgba(216, 148, 34, 0.45);
+      border-radius: var(--radius);
+      background: rgba(216, 148, 34, 0.13);
+      font-weight: 950;
+    }
+
+    .service h3,
+    .process-step h3,
+    .proof-card h3,
+    .review-card h3,
+    .plan h3,
+    .contact-card h3 {
+      margin-bottom: 10px;
+      color: var(--white);
+      font-size: 1.05rem;
+      line-height: 1.35;
+      font-weight: 900;
+    }
+
+    .service p,
+    .process-step p,
+    .proof-card p,
+    .review-card p,
+    .plan p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.66);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid rgba(216, 148, 34, 0.22);
+      background: rgba(216, 148, 34, 0.2);
+    }
+
+    .process-step {
+      min-height: 238px;
+      padding: 26px;
+      background:
+        linear-gradient(145deg, rgba(216, 148, 34, 0.08), rgba(255, 255, 255, 0.025)),
+        #151515;
+    }
+
+    .section-light .process-step h3,
+    .section-light .proof-card h3,
+    .section-light .contact-card h3 {
+      color: var(--white);
+    }
+
+    .section-light .process-step p,
+    .section-light .proof-card p {
+      color: rgba(245, 239, 227, 0.68);
+    }
+
+    .step-index {
+      display: block;
+      margin-bottom: 48px;
+      color: var(--gold-2);
+      font-size: 1.9rem;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .before-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .result-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .result-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .result-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .result-label {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 1;
+      padding: 8px 10px;
+      color: #130d06;
+      background: var(--gold-2);
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .result-content {
+      padding: 20px;
+    }
+
+    .result-content h3 {
+      margin-bottom: 8px;
+      color: var(--white);
+      font-size: 1.05rem;
+    }
+
+    .result-content p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.66);
+      line-height: 1.58;
+      font-size: 0.92rem;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .plan {
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .plan.featured {
+      background:
+        linear-gradient(145deg, rgba(216, 148, 34, 0.18), rgba(255, 255, 255, 0.045));
+      border-color: rgba(216, 148, 34, 0.56);
+      box-shadow: var(--shadow);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 10px;
+      color: var(--gold-soft);
+      border: 1px solid rgba(216, 148, 34, 0.42);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(255, 255, 255, 0.74);
+      line-height: 1.55;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 10px;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--gold-2);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .proof-card {
+      padding: 26px;
+      border: 1px solid rgba(216, 148, 34, 0.26);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(216, 148, 34, 0.1), rgba(255, 255, 255, 0.025)),
+        #151515;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+    }
+
+    .proof-icon {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--gold-2);
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .reviews-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .rating-box {
+      padding: 30px;
+      color: var(--steel);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(216, 148, 34, 0.12), rgba(255, 255, 255, 0.025)),
+        #151515;
+      border: 1px solid rgba(216, 148, 34, 0.28);
+    }
+
+    .stars {
+      color: #f5aa18;
+      font-size: 1.45rem;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .rating-box h3 {
+      margin: 18px 0 10px;
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+
+    .rating-box p {
+      margin-bottom: 22px;
+      color: rgba(245, 239, 227, 0.68);
+      line-height: 1.65;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .review-card {
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .review-card .stars {
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    .review-card p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .review-shot {
+      margin-top: 16px;
+      overflow: hidden;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #202124;
+    }
+
+    .review-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .faq-question {
+      width: 100%;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 22px;
+      color: var(--white);
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      font-weight: 900;
+    }
+
+    .faq-question span:last-child {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--gold-soft);
+      border: 1px solid rgba(216, 148, 34, 0.45);
+      border-radius: 50%;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 22px 22px;
+      color: rgba(255, 255, 255, 0.68);
+      line-height: 1.7;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .quote-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(340px, 1.14fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .contact-card {
+      padding: 30px;
+      border: 1px solid rgba(216, 148, 34, 0.28);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(145deg, rgba(216, 148, 34, 0.12), rgba(255, 255, 255, 0.025)),
+        #151515;
+      color: var(--steel);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+    }
+
+    .contact-card p {
+      color: rgba(245, 239, 227, 0.68);
+      line-height: 1.65;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--white);
+    }
+
+    .contact-list a,
+    .contact-list span {
+      color: rgba(245, 239, 227, 0.7);
+      line-height: 1.45;
+    }
+
+    .quote-form {
+      display: grid;
+      gap: 16px;
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 14px;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.28);
+      outline: 0;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .field select {
+      color-scheme: dark;
+    }
+
+    .field textarea {
+      min-height: 116px;
+      padding-top: 14px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(216, 148, 34, 0.8);
+      box-shadow: 0 0 0 3px rgba(216, 148, 34, 0.14);
+    }
+
+    .form-note {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.56);
+      line-height: 1.6;
+      font-size: 0.88rem;
+    }
+
+    .site-footer {
+      padding: 42px 0 34px;
+      color: rgba(255, 255, 255, 0.62);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: #050505;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .footer-grid p {
+      margin: 14px 0 8px;
+      line-height: 1.55;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-end;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-soft);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      border: 3px solid rgba(255, 255, 255, 0.92);
+      border-radius: 50%;
+      background: #25d366;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
+      font-weight: 950;
+    }
+
+    .whatsapp-float .wa-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .image-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      color: var(--gold-soft);
+      text-align: center;
+      font-weight: 900;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(216, 148, 34, 0.18)),
+        #131313;
+    }
+
+    .is-fallback .image-fallback {
+      display: grid;
+    }
+
+    .is-fallback img {
+      display: none;
+    }
+
+    @media (max-width: 1060px) {
+      .nav-links {
+        gap: 14px;
+        font-size: 0.84rem;
+      }
+
+      .hero h1 {
+        font-size: 3.3rem;
+      }
+
+      .service-grid,
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .before-grid,
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .topbar {
+        display: none;
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 68px 0 auto 0;
+        max-height: calc(100svh - 68px);
+        overflow: auto;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 16px;
+        background: rgba(7, 7, 7, 0.98);
+        border-bottom: 1px solid var(--line);
+      }
+
+      body.nav-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 16px 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        background-position: 58% center;
+      }
+
+      .hero-inner {
+        padding: 70px 0 54px;
+      }
+
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .hero-meta,
+      .about-grid,
+      .plans-grid,
+      .reviews-layout,
+      .quote-layout,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .section h2 {
+        font-size: 2.05rem;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .brand-word span {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.32rem;
+      }
+
+      .hero .lead {
+        font-size: 1rem;
+      }
+
+      .hero-actions,
+      .footer-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-meta,
+      .service-grid,
+      .process-grid,
+      .review-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-panel,
+      .plan,
+      .rating-box,
+      .quote-form,
+      .contact-card {
+        padding: 22px;
+      }
+
+      .logo-panel {
+        min-height: 330px;
+      }
+
+      .step-index {
+        margin-bottom: 28px;
+      }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-whatsapp" viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 1.9 131.6 1.9 254c0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157Zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.3 184.6-186.6 184.6Zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6Z"></path>
+    </symbol>
+  </svg>
+
+  <header class="site-header" id="topo">
+    <div class="topbar">
+      <div class="container">
+        <span><strong>Baixada Santista</strong> | Consulte retirada e entrega</span>
+        <div class="topbar-links">
+          <a href="tel:+5513981620189">(13) 98162-0189</a>
+          <a href="mailto:mendchair@gmail.com">mendchair@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container nav">
+      <a class="brand" href="#topo" aria-label="MEND CHAIR">
+        <img class="brand-logo" src="assets/logo.png" alt="Logo MEND CHAIR" />
+        <span class="brand-word">
+          <strong>MEND CHAIR</strong>
+          <span>Manutenção e conserto</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Menu principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Atendimento</a>
+        <a href="#resultados">Antes e depois</a>
+        <a href="#empresas">Planos</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#orcamento">Contato</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary btn-small js-whatsapp" href="#" data-message="Olá, MEND CHAIR! Quero agendar uma avaliação para conserto ou reforma de cadeira.">
+          <span class="wa-icon" aria-hidden="true"><svg><use href="#icon-whatsapp"></use></svg></span>
+          Chamar
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <p class="eyebrow">Especialista em cadeiras de escritório</p>
+        <h1 id="hero-title">Manutenção técnica de cadeiras de escritório.</h1>
+        <p class="lead">Conserto, reforma e troca de componentes para cadeiras de escritório, cadeiras gamer, cadeiras residenciais e cadeiras corporativas. Atendimento na Baixada Santista.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary js-whatsapp" href="#" data-message="Olá, MEND CHAIR! Quero agendar uma avaliação para conserto ou reforma de cadeira.">
+            <span class="wa-icon" aria-hidden="true"><svg><use href="#icon-whatsapp"></use></svg></span>
+            Chamar no WhatsApp
+          </a>
+          <a class="btn btn-outline" href="#resultados">
+            Ver antes e depois
+            <span class="icon">↓</span>
+          </a>
+        </div>
+        <div class="hero-meta" aria-label="Diferenciais">
+          <div>
+            <strong>Diagnóstico técnico</strong>
+            <span>Avaliação por peça, desgaste, estrutura e viabilidade de reforma.</span>
+          </div>
+          <div>
+            <strong>Pessoas e empresas</strong>
+            <span>Arrumamos cadeiras avulsas, cadeiras gamer e lotes corporativos.</span>
+          </div>
+          <div>
+            <strong>Atendimento local</strong>
+            <span>Atendimento na Baixada Santista com consulta de retirada e entrega.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container about-grid">
+        <div>
+          <div class="section-head">
+            <span class="section-label">MEND CHAIR</span>
+            <h2>Empresa técnica para conserto e reforma de cadeiras.</h2>
+          </div>
+          <div class="about-copy">
+            <p>A MEND CHAIR é especializada em manutenção, conserto e reforma de cadeiras. O trabalho é voltado para recuperar funcionalidade, conforto e aparência, sem tratar a cadeira como um item descartável.</p>
+            <p>Atendemos cadeiras avulsas, cadeiras de escritório, cadeiras gamer e demandas corporativas. Quando o reparo exige confirmação técnica, a avaliação presencial orienta o serviço indicado.</p>
+          </div>
+          <ul class="technical-list">
+            <li><span class="check">✓</span><span>Troca de pistão, rodízios, braços, bases, mecanismos, espuma e estofado.</span></li>
+            <li><span class="check">✓</span><span>Reforma de cadeiras executivas, operacionais, recepção, reunião, gamer e uso residencial.</span></li>
+            <li><span class="check">✓</span><span>Atendimento na Baixada Santista com consulta de retirada e entrega.</span></li>
+          </ul>
+        </div>
+
+        <div class="logo-panel">
+          <img src="assets/logo.png" alt="Logo MEND CHAIR manutenção e conserto de cadeiras de escritório" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-panel" id="servicos">
+      <div class="container">
+        <div class="section-head center">
+          <span class="section-label">Serviços</span>
+          <h2>Manutenção por componente, com solução certa para cada cadeira.</h2>
+          <p>Antes de indicar reforma completa, a MEND CHAIR avalia o que realmente precisa ser reparado, substituído ou recuperado.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service">
+            <span class="service-number">01</span>
+            <h3>Manutenção de cadeiras corporativas</h3>
+            <p>Reparos técnicos para uso diário em escritórios, clínicas, recepções e ambientes profissionais.</p>
+          </article>
+          <article class="service">
+            <span class="service-number">02</span>
+            <h3>Reforma de estofados</h3>
+            <p>Recuperação do revestimento para melhorar aparência, higiene e apresentação do ambiente.</p>
+          </article>
+          <article class="service">
+            <span class="service-number">03</span>
+            <h3>Troca de pistão</h3>
+            <p>Correção de altura, sustentação e estabilidade quando a cadeira começa a baixar ou falhar.</p>
+          </article>
+          <article class="service">
+            <span class="service-number">04</span>
+            <h3>Troca de rodízios</h3>
+            <p>Substituição de rodinhas travadas, quebradas ou inadequadas para o piso do escritório.</p>
+          </article>
+          <article class="service">
+            <span class="service-number">05</span>
+            <h3>Troca de espuma</h3>
+            <p>Recuperação de assentos e encostos que perderam conforto, volume ou sustentação.</p>
+          </article>
+          <article class="service">
+            <span class="service-number">06</span>
+            <h3>Braços, bases e mecanismos</h3>
+            <p>Correção de folgas, quebras, travas, inclinação e componentes de regulagem.</p>
+          </article>
+          <article class="service">
+            <span class="service-number">07</span>
+            <h3>Manutenção preventiva</h3>
+            <p>Revisão de lotes para empresas que querem evitar cadeiras paradas e trocas desnecessárias.</p>
+          </article>
+          <article class="service">
+            <span class="service-number">08</span>
+            <h3>Cadeiras gamer</h3>
+            <p>Conserto e reforma de cadeiras gamer com desgaste em estofado, braços, pistão e base.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="processo">
+      <div class="container">
+        <div class="section-head center">
+          <span class="section-label">Atendimento técnico</span>
+          <h2>Da cadeira avariada ao uso confortável novamente.</h2>
+          <p>A avaliação identifica se vale trocar peças, reformar o estofado, ajustar mecanismos ou recuperar a cadeira por completo.</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step">
+            <span class="step-index">01</span>
+            <h3>Primeiro contato</h3>
+            <p>Você chama no WhatsApp, informa o tipo de cadeira e o problema principal.</p>
+          </article>
+          <article class="process-step">
+            <span class="step-index">02</span>
+            <h3>Avaliação presencial</h3>
+            <p>Quando necessário, a cadeira é avaliada presencialmente para confirmar peças, desgaste e viabilidade.</p>
+          </article>
+          <article class="process-step">
+            <span class="step-index">03</span>
+            <h3>Serviço indicado</h3>
+            <p>A solução pode envolver pistão, rodízios, espuma, braços, base, mecanismo, estofado ou reforma completa.</p>
+          </article>
+          <article class="process-step">
+            <span class="step-index">04</span>
+            <h3>Conserto ou reforma</h3>
+            <p>O serviço é executado com foco em funcionamento, acabamento e vida útil da cadeira.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resultados">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Antes e depois</span>
+          <h2>Resultado visível em cadeiras que ainda podem ser recuperadas.</h2>
+          <p>Reformar uma cadeira em bom estado estrutural pode recuperar conforto, estética e vida útil sem substituir todo o mobiliário.</p>
+        </div>
+
+        <div class="before-grid">
+          <article class="result-card">
+            <div class="result-media">
+              <span class="result-label">Executiva</span>
+              <img src="assets/antes-depois-diretoria.png" alt="Antes e depois de cadeira executiva reformada" loading="lazy" />
+              <div class="image-fallback">Cadeira executiva reformada</div>
+            </div>
+            <div class="result-content">
+              <h3>Reforma de cadeira executiva</h3>
+              <p>Estofado renovado, acabamento mais limpo e cadeira pronta para ambiente profissional.</p>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <div class="result-media">
+              <span class="result-label">Gamer</span>
+              <img src="assets/antes-depois-gamer.png" alt="Antes e depois de cadeira gamer reformada" loading="lazy" />
+              <div class="image-fallback">Cadeira gamer reformada</div>
+            </div>
+            <div class="result-content">
+              <h3>Reforma de cadeira gamer</h3>
+              <p>Recuperação de revestimento, apoio, conforto e visual para uso intenso.</p>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <div class="result-media">
+              <span class="result-label">Escritório</span>
+              <img src="assets/antes-depois-executiva.png" alt="Antes e depois de cadeira de escritório reformada" loading="lazy" />
+              <div class="image-fallback">Cadeira de escritório reformada</div>
+            </div>
+            <div class="result-content">
+              <h3>Reforma de cadeira de escritório</h3>
+              <p>Substituição de revestimento e recuperação visual para prolongar o uso.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-panel" id="empresas">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-label">Atendimento individual e empresarial</span>
+          <h2>De uma cadeira avulsa a um lote completo.</h2>
+          <p>A MEND CHAIR atende quem precisa consertar uma única cadeira e também empresas que precisam organizar manutenção de várias unidades.</p>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan">
+            <span class="tag">Cadeira avulsa</span>
+            <h3>Conserto para pessoa física</h3>
+            <p>Indicado para cadeira de escritório, cadeira gamer ou cadeira residencial que precisa voltar a funcionar bem.</p>
+            <ul class="bullet-list">
+              <li>Avaliação presencial quando necessário</li>
+              <li>Diagnóstico por tipo de cadeira e componente</li>
+              <li>Consulta de retirada e entrega</li>
+            </ul>
+          </article>
+
+          <article class="plan featured">
+            <span class="tag">Manutenção recorrente</span>
+            <h3>Plano empresarial</h3>
+            <p>Para escritórios, clínicas, coworkings e empresas que querem reduzir trocas e manter padrão visual.</p>
+            <ul class="bullet-list">
+              <li>Organização de cadeiras por lote</li>
+              <li>Manutenção preventiva</li>
+              <li>Priorização de cadeiras críticas</li>
+              <li>Avaliação presencial para definição final do serviço</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="beneficios">
+      <div class="container">
+        <div class="section-head center">
+          <span class="section-label">Benefícios</span>
+          <h2>Por que consertar antes de comprar outra cadeira?</h2>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card">
+            <span class="proof-icon">01</span>
+            <h3>Economia inteligente</h3>
+            <p>Quando a estrutura permite, a manutenção evita compra desnecessária e aproveita melhor o mobiliário existente.</p>
+          </article>
+          <article class="proof-card">
+            <span class="proof-icon">02</span>
+            <h3>Ambiente mais apresentável</h3>
+            <p>Cadeiras renovadas melhoram a aparência do escritório, consultório, sala de atendimento ou ambiente de uso diário.</p>
+          </article>
+          <article class="proof-card">
+            <span class="proof-icon">03</span>
+            <h3>Menos cadeiras paradas ou descartadas</h3>
+            <p>A manutenção preventiva reduz falhas em pistão, rodízios, braços, bases e mecanismos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="avaliacoes">
+      <div class="container">
+        <div class="reviews-layout">
+          <aside class="rating-box">
+            <div class="stars" aria-label="Cinco estrelas">★★★★★</div>
+            <h3>Avaliações no Google</h3>
+            <p>Clientes destacam atendimento rápido, conserto de cadeiras de escritório e serviço bem feito.</p>
+            <a class="btn btn-primary" href="https://share.google/9cJGzpUhWWHFze2Uw" target="_blank" rel="noopener">
+              Ver Google Meu Negócio
+              <span class="icon">↗</span>
+            </a>
+          </aside>
+
+          <div>
+            <div class="section-head">
+              <span class="section-label">Prova social</span>
+              <h2>Quem procura manutenção quer confiança antes de enviar a cadeira.</h2>
+              <p>As avaliações reforçam o que mais importa nesse tipo de serviço: atendimento, solução técnica e resultado.</p>
+            </div>
+
+            <div class="review-grid">
+              <article class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3>Glaucia e Pine Suzuki Erthal</h3>
+                <p>“Atendimento rápido. Várias opções de cadeiras. Conserto em cadeiras de escritório. Recomendo.”</p>
+                <div class="review-shot">
+                  <img src="assets/avaliacao-google-2.png" alt="Avaliação do Google de Glaucia e Pine Suzuki Erthal" loading="lazy" />
+                </div>
+              </article>
+
+              <article class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3>Gabriel</h3>
+                <p>“Serviço super bem feito, e ótimo preço. Recomendo!”</p>
+                <div class="review-shot">
+                  <img src="assets/avaliacao-google-3.png" alt="Avaliação do Google de Gabriel" loading="lazy" />
+                </div>
+              </article>
+
+              <article class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3>Cristiano Ferreira</h3>
+                <p>Avaliação cinco estrelas no perfil da MEND CHAIR no Google.</p>
+                <div class="review-shot">
+                  <img src="assets/avaliacao-google-1.png" alt="Avaliações do Google de Cristiano Ferreira e Mauro Alberto" loading="lazy" />
+                </div>
+              </article>
+
+              <article class="review-card">
+                <div class="stars">★★★★★</div>
+                <h3>Mauro Alberto</h3>
+                <p>Avaliação cinco estrelas no perfil da MEND CHAIR no Google.</p>
+                <div class="review-shot">
+                  <img src="assets/avaliacao-google-1.png" alt="Avaliação do Google com cinco estrelas" loading="lazy" />
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-panel" id="faq">
+      <div class="container">
+        <div class="section-head center">
+          <span class="section-label">Perguntas frequentes</span>
+          <h2>Antes de chamar a MEND CHAIR.</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item active">
+            <button class="faq-question" type="button" aria-expanded="true">
+              <span>Vocês atendem somente empresas?</span>
+              <span>−</span>
+            </button>
+            <div class="faq-answer">Não. A MEND CHAIR atende cadeiras avulsas, cadeiras residenciais, cadeiras gamer e também empresas, escritórios, clínicas, coworkings e demandas por lote.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Como é definido o valor do serviço?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">O WhatsApp serve para o primeiro contato e agendamento. O orçamento final acontece após avaliação presencial da cadeira, quando o problema e as peças necessárias podem ser confirmados.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Vocês fazem retirada e entrega?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">Consulte retirada e entrega. A disponibilidade depende da cidade, quantidade de cadeiras, tipo de serviço e logística do atendimento.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Por que o site não mostra preços?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">Porque cada cadeira pode precisar de peças e serviços diferentes. O valor muda conforme modelo, componente, estofado, quantidade e retirada ou entrega.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Também consertam cadeiras gamer?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">Sim. A manutenção de cadeiras gamer pode incluir estofado, espuma, braços, pistão, rodízios, base e mecanismos.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="orcamento">
+      <div class="container quote-layout">
+        <aside class="contact-card">
+          <span class="section-label">Contato</span>
+          <h3>Fale com a MEND CHAIR.</h3>
+          <p>Chame pelo WhatsApp para explicar o problema e combinar a melhor forma de avaliação presencial.</p>
+          <ul class="contact-list">
+            <li>
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/5513981620189" target="_blank" rel="noopener">(13) 98162-0189</a>
+            </li>
+            <li>
+              <strong>E-mail</strong>
+              <a href="mailto:mendchair@gmail.com">mendchair@gmail.com</a>
+            </li>
+            <li>
+              <strong>Site</strong>
+              <a href="https://mendchair.com.br" target="_blank" rel="noopener">mendchair.com.br</a>
+            </li>
+            <li>
+              <strong>Área de atendimento</strong>
+              <span>Baixada Santista</span>
+            </li>
+            <li>
+              <strong>Logística</strong>
+              <span>Consulte retirada e entrega</span>
+            </li>
+          </ul>
+        </aside>
+
+        <form class="quote-form" id="quoteForm">
+          <div class="section-head">
+            <span class="section-label">Agendar avaliação</span>
+            <h2>Chame no WhatsApp.</h2>
+            <p>Preencha os dados para iniciar o atendimento e combinar a avaliação.</p>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="empresa">Empresa</label>
+              <input id="empresa" name="empresa" type="text" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="telefone">Telefone</label>
+              <input id="telefone" name="telefone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="field">
+              <label for="cidade">Cidade</label>
+              <input id="cidade" name="cidade" type="text" autocomplete="address-level2" placeholder="Ex.: Santos" />
+            </div>
+            <div class="field">
+              <label for="servico">Serviço</label>
+              <select id="servico" name="servico" required>
+                <option value="">Selecione</option>
+                <option>Manutenção de cadeiras corporativas</option>
+                <option>Reforma de cadeiras de escritório</option>
+                <option>Troca de pistão</option>
+                <option>Troca de rodízios</option>
+                <option>Troca de espuma</option>
+                <option>Reforma de estofados</option>
+                <option>Troca de braços, bases e mecanismos</option>
+                <option>Manutenção preventiva</option>
+                <option>Planos empresariais</option>
+                <option>Manutenção de cadeiras gamer</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="quantidade">Quantidade de cadeiras</label>
+              <input id="quantidade" name="quantidade" type="number" min="1" inputmode="numeric" placeholder="Ex.: 8" />
+            </div>
+            <div class="field full">
+              <label for="mensagem">Detalhes</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Descreva o problema, tipo de cadeira e se deseja consultar retirada e entrega."></textarea>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" type="submit">
+            <span class="wa-icon" aria-hidden="true"><svg><use href="#icon-whatsapp"></use></svg></span>
+            Chamar no WhatsApp
+          </button>
+          <p class="form-note">Não colocamos preços no site. O orçamento final depende da avaliação presencial, peças, quantidade, serviço e logística.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#topo" aria-label="MEND CHAIR">
+          <img class="brand-logo" src="assets/logo.png" alt="Logo MEND CHAIR" />
+          <span class="brand-word">
+            <strong>MEND CHAIR</strong>
+            <span>Manutenção e conserto</span>
+          </span>
+        </a>
+        <p>Especialista em manutenção, conserto e reforma de cadeiras de escritório na Baixada Santista.</p>
+        <small>© <span id="currentYear"></span> MEND CHAIR. Todos os direitos reservados.</small>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:mendchair@gmail.com">mendchair@gmail.com</a>
+        <a href="https://wa.me/5513981620189" target="_blank" rel="noopener">(13) 98162-0189</a>
+        <a href="https://share.google/9cJGzpUhWWHFze2Uw" target="_blank" rel="noopener">Google Meu Negócio</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float js-whatsapp" href="#" data-message="Olá, MEND CHAIR! Quero agendar uma avaliação para conserto ou reforma de cadeira." aria-label="Chamar a MEND CHAIR no WhatsApp">
+    <span class="wa-icon" aria-hidden="true"><svg><use href="#icon-whatsapp"></use></svg></span>
+  </a>
+
+  <script>
+    const WHATSAPP_NUMBER = "5513981620189";
+
+    function openWhatsApp(message) {
+      const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+      window.open(url, "_blank", "noopener");
+    }
+
+    document.querySelectorAll(".js-whatsapp").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        openWhatsApp(button.dataset.message || "Olá, MEND CHAIR! Quero agendar uma avaliação para conserto ou reforma de cadeira.");
+      });
+    });
+
+    const quoteForm = document.getElementById("quoteForm");
+
+    quoteForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(quoteForm);
+      const lines = [
+        "Olá, MEND CHAIR! Quero agendar uma avaliação para conserto ou reforma de cadeira.",
+        "",
+        "Nome: " + (data.get("nome") || ""),
+        "Empresa: " + (data.get("empresa") || "Não informado"),
+        "Telefone: " + (data.get("telefone") || ""),
+        "Cidade: " + (data.get("cidade") || "Não informado"),
+        "Serviço: " + (data.get("servico") || ""),
+        "Quantidade de cadeiras: " + (data.get("quantidade") || "Não informado"),
+        "Detalhes: " + (data.get("mensagem") || "Não informado")
+      ];
+
+      openWhatsApp(lines.join("\n"));
+    });
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = document.body.classList.toggle("nav-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        document.body.classList.remove("nav-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+      });
+    });
+
+    document.querySelectorAll(".faq-question").forEach((question) => {
+      question.addEventListener("click", () => {
+        const item = question.closest(".faq-item");
+        const isActive = item.classList.toggle("active");
+        question.setAttribute("aria-expanded", String(isActive));
+        question.querySelector("span:last-child").textContent = isActive ? "−" : "+";
+      });
+    });
+
+    document.querySelectorAll(".result-media").forEach((frame) => {
+      const image = frame.querySelector("img");
+      if (!image) {
+        return;
+      }
+      image.addEventListener("error", () => frame.classList.add("is-fallback"));
+      if (image.complete && image.naturalWidth === 0) {
+        frame.classList.add("is-fallback");
+      }
+    });
+
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
